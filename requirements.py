@@ -91,11 +91,29 @@ submissions_list = [
 # # print(find_unsubmitted("09-12-2025", ["John", "Richard"], submissions_list))
 
 
-def get_average_score(submissions_list):
-    sum_of_scores = sum(student["quizScore"] for student in submissions_list)
-    return round((sum_of_scores / len(submissions_list)), 2)
+# def get_average_score(submissions_list):
+#     sum_of_scores = sum(student["quizScore"] for student in submissions_list)
+#     return round((sum_of_scores / len(submissions_list)), 2)
 
 
-#print(get_average_score(submissions_list))
+# print(get_average_score(submissions_list))
+
 
 def get_average_score_by_module(submissions_list):
+    scores_by_module = {}
+    total_quizes_by_module = {}
+    for submission in submissions_list:
+        module = submission["quizModule"]
+        score = submission["quizScore"]
+        scores_by_module[module] += score
+        total_quizes_by_module[module] += 1
+
+    module_average = {}
+    for module in scores_by_module:
+        module_average[module] = round(
+            scores_by_module[module] / total_quizes_by_module[module], 2
+        )
+    return module_average
+
+
+print(get_average_score_by_module(submissions_list))
