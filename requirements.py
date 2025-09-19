@@ -50,36 +50,52 @@ submissions_list = [
 ]
 
 
-def filter_by_date(date, submission):
-    """
-    Filters submissions by date
-    """
-    filtered_dates = []
-    for submission_date in submissions_list:
-        if submission_date["submissionDate"] == date:
-            filtered_dates.append(submission_date)
-    return filtered_dates
+# # def filter_by_date(date, submissions_list):
+# #     """
+# #     Filters submissions by date when given a date and a list
+# #     Returns an empty list when no data is found
+# #     """
+# #     return [
+# #         student for student in submissions_list if student["submissionDate"] == date
+# #     ]
 
 
-# print(filter_by_date("09-10-2025", submissions_list))
+# # print(filter_by_date("09-01-2025", submissions_list))
 
 
-def filter_by_student_id(student_id, submission):
-    """
-    Filters data by student ID
-    """
-    filtered_id = []
-    for student in submissions_list:
-        if student["studentID"] == student_id:
-            filtered_id.append(student)
-    return filtered_id
+# # def filter_by_student_id(student_id, submissions_list):
+# #     """
+# #     Filters data by student ID when given a student ID and a list
+# #     Returns an empty list if no data is found
+# #     """
+# #     return [
+# #         student for student in submissions_list if student["studentID"] == student_id
+# #     ]
 
 
-# print(filter_by_student_id(147, submissions_list))
+# # print(filter_by_student_id(123, submissions_list))
 
 
-# def find_unsubmitted():
+# def find_unsubmitted(date, student_name, submissions_list):
+#     students_who_submitted = [
+#         student["studentName"]
+#         for student in submissions_list
+#         if student["submissionDate"] == date
+#     ]
+#     not_submitted = [
+#         student for student in student_name if student not in students_who_submitted
+#     ]
+#     return not_submitted
 
-# def get_average_score():
 
-# def get_average_score_by_module():
+# # print(find_unsubmitted("09-12-2025", ["John", "Richard"], submissions_list))
+
+
+def get_average_score(submissions_list):
+    sum_of_scores = sum(student["quizScore"] for student in submissions_list)
+    return round((sum_of_scores / len(submissions_list)), 2)
+
+
+#print(get_average_score(submissions_list))
+
+def get_average_score_by_module(submissions_list):
