@@ -54,13 +54,28 @@ def filter_by_date(date, submission):
     """
     Filters submissions by date
     """
-    return [sub for sub in submissions_list if sub["submissionDate"] == date]
+    filtered_dates = []
+    for submission_date in submissions_list:
+        if submission_date["submissionDate"] == date:
+            filtered_dates.append(submission_date)
+    return filtered_dates
 
 
-# print(filter_by_date("09-12-2025", submissions_list))
+# print(filter_by_date("09-10-2025", submissions_list))
 
 
-# def filter_by_student_id():
+def filter_by_student_id(student_id, submission):
+    """
+    Filters data by student ID
+    """
+    filtered_id = []
+    for student in submissions_list:
+        if student["studentID"] == student_id:
+            filtered_id.append(student)
+    return filtered_id
+
+
+# print(filter_by_student_id(147, submissions_list))
 
 
 # def find_unsubmitted():
