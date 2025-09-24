@@ -95,7 +95,7 @@ def get_average_score(submissions_list):
     Returns the average score for all quizes
     """
     sum_of_scores = sum(student["quizScore"] for student in submissions_list)
-    return round((sum_of_scores / len(submissions_list)), 2)
+    return round((sum_of_scores / len(submissions_list)), 1)
 
 
 def get_average_score_by_module(submissions_list):
